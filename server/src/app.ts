@@ -1,7 +1,10 @@
 import express, { Request, Response } from "express";
 
+import { connectDB } from "./config/db";
+
 const app = express();
-const port = 3000;
+const port = 8080;
+connectDB();
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
