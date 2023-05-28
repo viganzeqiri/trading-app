@@ -1,15 +1,17 @@
 version: "3"
 services:
   trading-app:
-    build: ./server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     volumes:
       - ./server:/app
     depends_on:
       - db
-    environment:
-      DB_CONNECTION_STRING: mongodb://db:27017/mydatabase
+    env_file:
+      - ./server/.env
     command: npm run start
 
   db:

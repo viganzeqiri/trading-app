@@ -1,21 +1,16 @@
 import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema({
-  transactionHash: {
+  type: {
     type: String,
+    enum: ["buy", "sell"],
     required: true,
-    unique: true,
   },
-  blockNumber: {
+  amount: {
     type: Number,
     required: true,
   },
-  from: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  to: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
@@ -23,10 +18,6 @@ const transactionSchema = new mongoose.Schema({
   timestamp: {
     type: Date,
     default: Date.now,
-  },
-  value: {
-    type: Number,
-    required: true,
   },
 });
 
