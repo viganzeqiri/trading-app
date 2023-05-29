@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "build/src/app.js",
+  "main": "src/app.js",
   "scripts": {
     "clean": "rimraf ./build",
     "build": "npm-run-all lint format clean && tsc",
