@@ -23,3 +23,4 @@ To set up and run the application locally, follow these steps:
 ```shell
 docker-compose up
 ```
+5. App should run on `http://localhost:5173/`
