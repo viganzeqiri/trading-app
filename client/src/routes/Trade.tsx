@@ -13,7 +13,7 @@ export default function Trade() {
   }
 
   return (
-    <main className="w-screen min-h-[90vh] bg-purple flex flex-col items-center justify-center">
+    <main className="w-screen min-h-screen bg-purple flex flex-col items-center justify-center">
       <Tabs activeTab={activeTab} onTabChange={handleTabChange} />
       <BtcPrice />
       <TransactionForm type={activeTab} />

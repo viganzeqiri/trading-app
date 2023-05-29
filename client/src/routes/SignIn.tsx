@@ -28,7 +28,7 @@ export default function SignIn() {
   }
 
   return (
-    <main className="w-screen h-[90vh] flex flex-col items-center justify-center bg-purple text-yellow">
+    <main className="w-screen min-h-screen flex flex-col items-center justify-center bg-purple text-yellow">
       <AuthForm
         type="signin"
         onSubmit={handleSignIn}

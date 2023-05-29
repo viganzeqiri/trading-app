@@ -31,7 +31,7 @@ export default function Register() {
   }
 
   return (
-    <main className="w-screen h-[90vh] flex items-center justify-center bg-purple text-yellow">
+    <main className="w-screen h-screen flex items-center justify-center bg-purple text-yellow">
       <AuthForm
         type="register"
         onSubmit={handleRegister}

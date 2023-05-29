@@ -17,7 +17,7 @@ services:
   db:
     image: mongo
     volumes:
-      - mongodb_data:/data/test
+      - mongodb_data:/data/test-trading-app
 
   client:
     build:

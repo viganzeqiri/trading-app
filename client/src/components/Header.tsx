@@ -12,7 +12,7 @@ export default function Header() {
   }
 
   return (
-    <header className="h-[10vh] bg-purple p-4 flex items-center justify-between">
+    <header className="h-[10vh] w-screen fixed bg-purple p-4 flex items-center justify-between">
       <section>
         <h1 className="text-yellow text-4xl font-extrabold">Trading App</h1>
       </section>
