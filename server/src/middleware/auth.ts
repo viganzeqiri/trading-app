@@ -16,14 +16,11 @@ const authorize = (
     return response.status(401).json({ error: "Unauthorized" });
   }
 
-  console.log({ token });
   try {
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET as string
     ) as JwtPayload;
-
-    console.log({ decoded });
     request.userId = decoded.userId;
 
     next();

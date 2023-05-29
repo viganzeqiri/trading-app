@@ -20,13 +20,12 @@ const createTransaction = async (
       return res.status(404).json({ error: "User not found" });
     }
 
-    const transactionValue = type === "buy" ? -amount : amount;
-
-    if (user.balance + transactionValue < 0) {
+    if (type === "sell" && user.balance < amount) {
       return res.status(400).json({ error: "Insufficient balance" });
     }
 
-    user.balance += transactionValue;
+    user.balance =
+      type === "sell" ? user.balance - amount : user.balance + amount;
     await user.save();
 
     const transaction = new Transaction({
@@ -46,7 +45,7 @@ const createTransaction = async (
 
 const getAllTransactions = async (_: Request, response: Response) => {
   try {
-    const transactions = await Transaction.find();
+    const transactions = await Transaction.find().sort("-timestamp");
     response.json(transactions);
   } catch (error) {
     console.error("Error getting transactions:", error);

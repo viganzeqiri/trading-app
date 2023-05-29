@@ -48,7 +48,10 @@ const login = async (
       process.env.JWT_SECRET as string
     );
 
-    response.status(200).json({ user, token });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { privateKey: pk, ...userData } = user.toObject();
+
+    response.status(200).json({ user: userData, token });
   } catch (error) {
     console.error("Error logging in:", error);
     response.status(500).json({ error: "Server error" });
