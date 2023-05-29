@@ -31,13 +31,13 @@ export default function Register() {
   }
 
   return (
-    <div className="w-screen h-[90vh] flex items-center justify-center bg-purple text-yellow">
+    <main className="w-screen h-[90vh] flex items-center justify-center bg-purple text-yellow">
       <AuthForm
         type="register"
         onSubmit={handleRegister}
         loading={isLoading}
         error={error as AuthFormError}
       />
-    </div>
+    </main>
   );
 }

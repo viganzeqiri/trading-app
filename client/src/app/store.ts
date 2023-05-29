@@ -8,17 +8,20 @@ import {
 
 import { authApi } from "./api/auth";
 import { transactionsApi } from "./api/transactions";
+import { btcPriceApi } from "./api/btc";
 import userSlice from "./features/userSlice";
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
+    [btcPriceApi.reducerPath]: btcPriceApi.reducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
     user: userSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
       authApi.middleware,
+      btcPriceApi.middleware,
       transactionsApi.middleware,
     ]),
 });

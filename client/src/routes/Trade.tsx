@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BtcPrice from "../components/BtcPrice";
 
 import Tabs from "../components/Tabs";
 import TransactionForm from "../components/TransactionForm";
@@ -12,10 +13,11 @@ export default function Trade() {
   }
 
   return (
-    <div className="w-screen min-h-[90vh] bg-purple flex flex-col items-center justify-center">
+    <main className="w-screen min-h-[90vh] bg-purple flex flex-col items-center justify-center">
       <Tabs activeTab={activeTab} onTabChange={handleTabChange} />
+      <BtcPrice />
       <TransactionForm type={activeTab} />
       <TransactionList />
-    </div>
+    </main>
   );
 }

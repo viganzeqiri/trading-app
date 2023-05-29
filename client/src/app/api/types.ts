@@ -2,7 +2,8 @@ export interface User {
   _id: string;
   publicKey: string;
   privateKey: string;
-  balance: number;
+  btcBalance: number;
+  usdtBalance: number;
   transactions: [];
   createdAt: Date | null;
   __v: number;
@@ -11,7 +12,7 @@ export interface User {
 export interface Transaction {
   _id: string;
   type: "buy" | "sell";
-  amount: number;
+  btcAmount: number;
   userId: string;
   timestamp: Date | null;
 }

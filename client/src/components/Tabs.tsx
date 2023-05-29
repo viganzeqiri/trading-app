@@ -11,7 +11,7 @@ export default function Tabs({ activeTab, onTabChange }: Props) {
   }
 
   return (
-    <div className="btn-group my-8">
+    <div className="btn-group mt-4">
       <button
         className={`btn ${activeTab === "buy" ? activeClasses : ""}`}
         onClick={() => handleTabClick("buy")}

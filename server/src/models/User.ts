@@ -10,9 +10,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  balance: {
+  btcBalance: {
     type: Number,
     default: 0,
+  },
+  usdtBalance: {
+    type: Number,
+    default: 10000,
   },
   transactions: [
     {

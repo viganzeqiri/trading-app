@@ -59,9 +59,7 @@ export default function AuthForm({
             </Link>
 
             <button
-              className={`btn bg-yellow border-0" type="submit ${
-                loading ? "loading" : ""
-              }`}
+              className={`btn bg-yellow border-0 ${loading ? "loading" : ""}`}
             >
               {type === "signin" ? "Sign In" : "Register"}
             </button>

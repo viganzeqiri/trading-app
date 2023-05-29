@@ -6,7 +6,7 @@ const transactionSchema = new mongoose.Schema({
     enum: ["buy", "sell"],
     required: true,
   },
-  amount: {
+  btcAmount: {
     type: Number,
     required: true,
   },

@@ -23,7 +23,7 @@ export const transactionsApi = createApi({
     }),
     createTransaction: builder.mutation<
       Transaction,
-      { userId: string; type: "buy" | "sell"; amount: number }
+      { userId: string; type: "buy" | "sell"; btcAmount: number }
     >({
       query: (credentials) => ({
         url: "",

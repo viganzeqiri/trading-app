@@ -1,11 +1,12 @@
 import { useRef, FormEvent } from "react";
+import { useLazyGetUserQuery } from "../app/api/auth";
 
 import {
   useCreateTransactionMutation,
   useLazyGetTransactionsQuery,
 } from "../app/api/transactions";
-import { selectUser } from "../app/features/userSlice";
-import { useAppSelector } from "../app/store";
+import { selectUser, setUser } from "../app/features/userSlice";
+import { useAppDispatch, useAppSelector } from "../app/store";
 import { type AuthFormError } from "./AuthForm";
 
 interface IProps {
@@ -13,7 +14,7 @@ interface IProps {
 }
 
 export type TransactionFormData = {
-  amount: string;
+  btcAmount: string;
 };
 
 export default function TransactionForm({ type }: IProps) {
@@ -21,24 +22,28 @@ export default function TransactionForm({ type }: IProps) {
   const [sendTransaction, { error, isLoading }] =
     useCreateTransactionMutation();
   const [refetchTransactions] = useLazyGetTransactionsQuery();
+  const [getUser] = useLazyGetUserQuery();
   const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const { amount } = Object.fromEntries(formData) as TransactionFormData;
+    const { btcAmount } = Object.fromEntries(formData) as TransactionFormData;
 
-    if (!user || !amount) return;
+    if (!user || !btcAmount) return;
 
     await sendTransaction({
-      amount: Number(amount),
+      btcAmount: Number(btcAmount),
       type,
       userId: user?._id,
     });
 
     formRef.current?.reset();
     refetchTransactions({});
+
+    dispatch(setUser((await getUser({ userId: user?._id }).unwrap()).user));
   }
 
   return (
@@ -47,8 +52,8 @@ export default function TransactionForm({ type }: IProps) {
         <h2 className="card-title mb-4"> {type === "buy" ? "Buy" : "Sell"}</h2>
         <form ref={formRef} onSubmit={handleSubmit}>
           <input
-            name="amount"
-            type="number"
+            name="btcAmount"
+            type="text"
             placeholder="BTC"
             className="input input-bordered w-full max-w-xs"
           />

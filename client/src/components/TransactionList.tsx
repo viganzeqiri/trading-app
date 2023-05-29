@@ -7,7 +7,9 @@ export default function TransactionList() {
 
   return (
     <div className="flex flex-col items-center justify-center mt-6">
-      <h2 className="text-center text-yellow mb-4">Transactions</h2>
+      <h2 className="text-center text-yellow mb-4">
+        {!(data || []).length ? "No transactions yet" : "Transactions"}{" "}
+      </h2>
       {isLoading ? (
         <Spinner />
       ) : (
@@ -21,7 +23,7 @@ export default function TransactionList() {
                 User: <span>{tx.userId}</span>{" "}
               </p>
               <p>
-                Amount: <span>{tx.amount}</span>{" "}
+                Amount: <span>{tx.btcAmount}</span>{" "}
               </p>
               <p>
                 Type: <span>{tx.type === "buy" ? "BUY" : "SELL"}</span>
